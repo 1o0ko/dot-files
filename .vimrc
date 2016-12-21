@@ -53,7 +53,7 @@ set autoindent
 set encoding=utf-8
 
 "adding python PEP8 formats
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py:
     \ set tabstop=4
     \ set softtabstop=4
     \ set shiftwidth=4
@@ -63,20 +63,16 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 "adding 'full stack' rules
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js, *.html, *.css:
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
 
 "Ruby formatting
-au BufNewFile,BufRead *.rb
+au BufNewFile,BufRead *.rb:
     \ set tabstop=2
     \ set shiftwidth=2
     \ set expandtab
-
-"Flag whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h
-    \ match BadWhitespace /\s\+$/
 
 "Configure YoyCompleteMe autocompletion
 let g:ycm_autoclose_preview_window_after_completion=1
