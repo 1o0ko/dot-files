@@ -168,3 +168,7 @@ set backspace=indent,eol,start
 " Hide buffer (file) instead of abandoning when switching
 " to another buffer
 set hidden
+
+" Powerline setup
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
