@@ -21,9 +21,13 @@ Plugin 'vim-scripts/indentpython.vim'
 " Dev related
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
 
 "git interface
 Plugin 'tpope/vim-fugitive'
+
+" Colors
+Plugin 'crusoexia/vim-monokai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,12 +46,14 @@ nnoremap <C-H> <C-W><C-H>
 
 " Setup vim to use colorcheme monokai
 colorscheme monokai
+" vim-monokai now only support 256 colours in terminal.
+set t_Co=256  
 
 " Setup syntax highlighting
 syntax on
 
 set autoindent
-:set number
+highlight Search ctermbg=yellow ctermfg=black
 
 "UTF-8 support
 set encoding=utf-8
@@ -74,20 +80,18 @@ au BufNewFile,BufRead *.rb:
     \ set shiftwidth=2
     \ set expandtab
 
-"Configure YoyCompleteMe autocompletion
+"Configure YouCompleteMe autocompletion
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "NERDtree key maps
-silent! nmap <C-p> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
-
+nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
 "Ignore pyc files in NREDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -105,7 +109,7 @@ set clipboard=unnamed
 :set autoread
 
 " Enable pasting
-:set paste
+:set pastetoggle=<F10>
 
 "Intelligent buffer closing
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>. 
@@ -125,3 +129,42 @@ EOF
 
 " Syntax
 let python_highlight_all=1
+
+
+" ctrlp config
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*build/*
+set wildignore+=*dist/*
+set wildignore+=*__pycache__/*
+set wildignore+=*.egg-info/*
+set wildignore+=*/coverage/*
+
+" -- Display
+set title                 " Update the title of your window or your terminal
+set number                " Display line numbers
+set ruler                 " Display cursor position
+set wrap                  " Wrap lines when they are too long
+
+set scrolloff=3           " Display at least 3 lines around you cursor
+                          " (for scrolling)
+
+set guioptions=T          " Enable the toolbar
+
+" -- Search
+set ignorecase            " Ignore case when searching
+set smartcase             " If there is an uppercase in your search term
+                          " search case sensitive again
+set incsearch             " Highlight search results when typing
+set hlsearch              " Highlight search results
+
+" -- Beep
+set visualbell            " Prevent Vim from beeping
+set noerrorbells          " Prevent Vim from beeping
+
+" Backspace behaves as expected
+set backspace=indent,eol,start
+
+" Hide buffer (file) instead of abandoning when switching
+" to another buffer
+set hidden
