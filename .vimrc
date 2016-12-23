@@ -22,6 +22,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
+Plugin '1o0ko/vimcmdline'
 
 "git interface
 Plugin 'tpope/vim-fugitive'
@@ -172,3 +173,6 @@ set hidden
 " Powerline setup
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
+
+" Plugin configuration
+let g:cmdline_ipyhton = 1 
