@@ -14,8 +14,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 
 " Python plugins
-Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'vim-scripts/indentpython.vim'
 
 " Dev related
@@ -91,7 +90,7 @@ let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
 "Ignore pyc files in NREDTree
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$', '__pycache__$[[dir]]'] "ignore files in NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Enable folding
 set foldmethod=indent
