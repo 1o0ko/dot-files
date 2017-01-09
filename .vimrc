@@ -9,7 +9,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 
@@ -28,6 +29,7 @@ Plugin 'tpope/vim-fugitive'
 
 " Colors
 Plugin 'crusoexia/vim-monokai'
+Plugin 'edkolev/tmuxline.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -169,9 +171,8 @@ set backspace=indent,eol,start
 " to another buffer
 set hidden
 
-" Powerline setup
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-set laststatus=2
-
 " Plugin configuration
 let g:cmdline_ipyhton = 1 
+
+" Theme configuration
+let g:airline_theme='dark'
