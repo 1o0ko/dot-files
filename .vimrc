@@ -15,14 +15,14 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 
 " Python plugins
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
 Plugin 'vim-scripts/indentpython.vim'
 
 " Dev related
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
-Plugin '1o0ko/vimcmdline'
+Plugin 'jalvesaq/vimcmdline'
 
 "git interface
 Plugin 'tpope/vim-fugitive'
@@ -115,19 +115,6 @@ set clipboard=unnamed
 
 "Intelligent buffer closing
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>. 
-
-
-"python with virtualenv support
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUA_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  sys.path.insert(0, project_base_dir)
-  activate_this = os.path.join(project_base_dir,'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
 
 " Syntax
 let python_highlight_all=1
