@@ -163,3 +163,6 @@ let g:cmdline_ipyhton = 1
 
 " Theme configuration
 let g:airline_theme='dark'
+
+let cmdline_app           = {}
+let cmdline_app["python"] = "pyhton3"
