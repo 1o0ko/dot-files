@@ -20,6 +20,6 @@ rm -rf cmake*.tar.gz
 
 # Configure and build cmake
 cd cmake*
-./configure --prefix=$HOME
+./configure --prefix=$HOME -- -DCMAKE_USE_OPENSSL=ON
 make
 make install
