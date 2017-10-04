@@ -4,6 +4,7 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 #instal core utils to replace ls
+brew install httpie
 brew install vim
 brew install nvim
 brew install coreutils
