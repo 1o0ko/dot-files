@@ -14,3 +14,8 @@ export HISTCONTROL=ignoreboth:erasedups
 
 # set vim as default editor
 export EDITOR=vim
+
+export CLICOLOR=1
+
+alias ls="gls --group-directories-first --color=auto"
+alias ll="ls -la"
