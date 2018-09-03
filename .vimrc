@@ -15,14 +15,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 
 " Python plugins
-" Plugin 'w0rp/ale'
-Plugin 'vim-scripts/indentpython.vim'
+Plugin 'w0rp/ale'
 
 " Dev related
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'jalvesaq/vimcmdline'
 
 "git interface
 Plugin 'tpope/vim-fugitive'
@@ -76,16 +72,6 @@ au BufNewFile,BufRead *.js, *.html, *.css:
     \ set softtabstop=2
     \ set shiftwidth=2
 
-"Ruby formatting
-au BufNewFile,BufRead *.rb:
-    \ set tabstop=2
-    \ set shiftwidth=2
-    \ set expandtab
-
-"Configure YouCompleteMe autocompletion
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 "NERDtree key maps
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeMapActivateNode="<F3>"
@@ -94,15 +80,10 @@ let g:NERDTreeMapPreview="<F4>"
 "Ignore pyc files in NREDTree
 let NERDTreeIgnore=['\.pyc$', '\~$', '__pycache__$[[dir]]'] "ignore files in NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
-" Enable folding with the spacebar
-nnoremap <space> za
-
-" See docstring for folded code
-let g:SimpylFold_docstring_preview=1
 
 "enable system clipboard
 set clipboard=unnamed
@@ -163,6 +144,3 @@ let g:cmdline_ipyhton = 1
 
 " Theme configuration
 let g:airline_theme='dark'
-
-let cmdline_app           = {}
-let cmdline_app["python"] = "pyhton3"
