@@ -13,15 +13,21 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim'
+else
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+Plugin 'zchee/deoplete-jedi'
+"
 " Python plugins
 Plugin 'w0rp/ale'
+Plugin 'vim-scripts/indentpython.vim'
 
 " Dev related
 Plugin 'scrooloose/nerdcommenter'
-
-"git interface
-Plugin 'tpope/vim-fugitive'
+Plugin 'jalvesaq/vimcmdline'
 
 " Colors
 Plugin 'crusoexia/vim-monokai'
@@ -74,8 +80,6 @@ au BufNewFile,BufRead *.js, *.html, *.css:
 
 "NERDtree key maps
 nmap <leader>t :NERDTreeToggle<CR>
-let g:NERDTreeMapActivateNode="<F3>"
-let g:NERDTreeMapPreview="<F4>"
 
 "Ignore pyc files in NREDTree
 let NERDTreeIgnore=['\.pyc$', '\~$', '__pycache__$[[dir]]'] "ignore files in NERDTree
@@ -84,6 +88,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" See docstring for folded code
+let g:SimpylFold_docstring_preview=1
 
 "enable system clipboard
 set clipboard=unnamed
@@ -112,14 +122,11 @@ set wildignore+=*/coverage/*
 
 " -- Display
 set title                 " Update the title of your window or your terminal
-set number                " Display line numbers
 set ruler                 " Display cursor position
 set wrap                  " Wrap lines when they are too long
 
 set scrolloff=3           " Display at least 3 lines around you cursor
                           " (for scrolling)
-
-set guioptions=T          " Enable the toolbar
 
 " -- Search
 set ignorecase            " Ignore case when searching
@@ -139,8 +146,44 @@ set backspace=indent,eol,start
 " to another buffer
 set hidden
 
-" Plugin configuration
-let g:cmdline_ipyhton = 1 
-
 " Theme configuration
 let g:airline_theme='dark'
+let g:airline#extensions#ale#enabled = 1
+
+" Plugin configuration
+let cmdline_app           = {}
+let cmdline_app["python"] = "python3"
+let cmdline_outhl         = 1
+let cmdline_follow_colorscheme = 1
+
+" Autocomple 
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#sources#ternjs#docs = 1
+"
+
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+set mouse=a
+
+" whitespace toggling
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬\,space:·
+
+" turn off highlighting
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+
+" line formating
+set formatoptions=qrn1
+set colorcolumn=85
+
+" linr numering
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
