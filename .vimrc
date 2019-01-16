@@ -81,8 +81,13 @@ au BufNewFile,BufRead *.js, *.html, *.css:
 "NERDtree key maps
 nmap <leader>t :NERDTreeToggle<CR>
 
-"Ignore pyc files in NREDTree
+" Ignore pyc files in NREDTree
 let NERDTreeIgnore=['\.pyc$', '\~$', '__pycache__$[[dir]]'] "ignore files in NERDTree
+
+" Refresh pane
+
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+" Close NERDTree if there are no buffers
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Enable folding
